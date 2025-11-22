@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Inventario de Bodega</title>
+    <meta name="description" content="Inventario sencillo con login admin" />
+    <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Inventario de Bodega</h1>
+            <nav class="topbar">
+                <span id="user-info" class="muted"></span>
+                <button id="logoutBtn" class="btn-logout" style="display:none">Cerrar sesión</button>
+            </nav>
+        </header>
+
+        <main role="main" class="grid" aria-labelledby="main-heading">
+            <section class="card" id="inventory-section" style="display:none">
+                <h2 id="main-heading">Inventario</h2>
+                <p class="lead">Admin puede agregar, editar cantidad y eliminar productos.</p>
+
+                <form id="addForm" aria-label="Agregar producto">
+                    <label>Nombre
+                        <input type="text" id="nombre" required>
+                    </label>
+                    <label>Marca
+                        <input type="text" id="marca">
+                    </label>
+                    <label>Modelo
+                        <input type="text" id="modelo">
+                    </label>
+                    <label>Precio (USD)
+                        <input type="number" id="precio" min="0" step="0.01" value="0">
+                    </label>
+                    <label>Cantidad
+                        <input type="number" id="cantidad" min="0" step="1" value="0">
+                    </label>
+                    <p class="form-row">
+                        <button type="submit">Agregar / Guardar</button>
+                    </p>
+                </form>
+
+                <div id="tableContainer"></div>
+            </section>
+
+            <aside class="card" aria-label="Sidebar">
+                <div id="login-card">
+                    <h3>Acceso Administrador</h3>
+                    <p class="muted">Ingrese con su usuario para administrar cantidades.</p>
+                    <form id="loginForm">
+                        <label>Usuario
+                            <input type="text" id="username" required>
+                        </label>
+                        <label>Contraseña
+                            <input type="password" id="password" required>
+                        </label>
+                        <p class="form-row">
+                            <button type="submit">Iniciar sesión</button>
+                        </p>
+                        <p class="muted small-info">Usuario por defecto: <strong>admin</strong>, contraseña: <strong>admin123</strong></p>
+                    </form>
+                </div>
+
+                <div id="admin-config" style="margin-top:1rem">
+                    <h4>Configurar cuenta admin</h4>
+                    <p class="muted small-info">Para cambiar el usuario/contraseña ingrese las credenciales actuales y las nuevas.</p>
+                    <form id="adminForm">
+                        <label>Usuario actual
+                            <input type="text" id="currentUser" required>
+                        </label>
+                        <label>Contraseña actual
+                            <input type="password" id="currentPass" required>
+                        </label>
+                        <label>Nuevo usuario
+                            <input type="text" id="newUser" required>
+                        </label>
+                        <label>Nueva contraseña
+                            <input type="password" id="newPass" required>
+                        </label>    
+                        <p class="form-row">
+                            <button type="submit">Actualizar credenciales</button>
+                        </p>
+                    </form>
+                </div>
+
+                <div id="info" style="margin-top:1rem">
+                    <h4>Ayuda rápida</h4>
+                    <ul>
+                        <li>Registrar productos con Nombre, Marca, Modelo, Precio y Cantidad.</li>
+                        <li>Editar cantidad con el botón "Editar".</li>
+                        <li>Los datos se guardan en el navegador (localStorage).</li>
+                    </ul>
+                </div>
+            </aside>
+        </main>
+
+        <footer>
+            <small>© <span id="year"></span> — Inventario básico</small>
+        </footer>
+    </div>
+
+    <script src="Script.js" defer></script>
+</body>
+</html>

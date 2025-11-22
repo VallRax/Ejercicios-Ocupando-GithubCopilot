@@ -1,0 +1,197 @@
+:root{
+	--bg:#f7fafc;
+	--card:#ffffff;
+	--muted:#6b7280;
+	--accent:#3b82f6; /* azul claro */
+	--accent-600:#2563eb;
+	--success:#10b981;
+	--danger:#ef4444;
+	--glass: rgba(255,255,255,0.6);
+	--radius:10px;
+	--shadow: 0 6px 18px rgba(15,23,42,0.06);
+	--max-width:1100px;
+}
+
+/* Reset y base */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+	margin:0;
+	font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+	background:linear-gradient(180deg,var(--bg),#ffffff);
+	color:#111827;
+	-webkit-font-smoothing:antialiased;
+	-moz-osx-font-smoothing:grayscale;
+}
+
+.container{
+	max-width:var(--max-width);
+	margin:2rem auto;
+	padding:1rem;
+}
+
+header{
+	display:flex;
+	align-items:center;
+	justify-content:space-between;
+	gap:1rem;
+	margin-bottom:1rem;
+}
+
+header h1{
+	margin:0;
+	font-size:1.35rem;
+	font-weight:600;
+	color:#0f172a;
+}
+
+.topbar{
+	display:flex;
+	gap:.75rem;
+	align-items:center;
+}
+
+.muted{color:var(--muted)}
+
+/* Layout principal */
+.grid{
+	display:grid;
+	grid-template-columns: 1fr 320px;
+	gap:1.25rem;
+	align-items:start;
+}
+
+@media (max-width:860px){
+	.grid{grid-template-columns:1fr}
+}
+
+/* Cards */
+.card{
+	background:var(--card);
+	border-radius:var(--radius);
+	box-shadow:var(--shadow);
+	padding:1rem;
+}
+
+/* Forms */
+form label{
+	display:block;
+	font-size:.92rem;
+	margin-bottom:.6rem;
+	color:#0f172a;
+}
+
+form input[type="text"],
+form input[type="password"],
+form input[type="number"]{
+	width:100%;
+	padding:.6rem .75rem;
+	border:1px solid #e6e9ef;
+	border-radius:8px;
+	background:linear-gradient(180deg,#fff,#fbfdff);
+	margin-top:.35rem;
+	font-size:.95rem;
+}
+
+form input:focus{
+	outline:none;
+	box-shadow:0 0 0 4px rgba(59,130,246,0.12);
+	border-color:var(--accent-600);
+}
+
+.form-row{margin-top:.8rem}
+
+button{
+	font-weight:600;
+	cursor:pointer;
+	border:0;
+	padding:.6rem .9rem;
+	border-radius:8px;
+	background:var(--accent);
+	color:white;
+	transition:transform .08s ease, box-shadow .08s ease, background .08s ease;
+}
+
+button:hover{transform:translateY(-1px);background:var(--accent-600)}
+
+.btn-logout{
+	background:transparent;
+	color:var(--danger);
+	padding:.35rem .6rem;
+	border-radius:8px;
+	border:1px solid rgba(239,68,68,0.12);
+}
+
+.lead{color:#374151;margin-top:0}
+
+/* Tabla de inventario */
+#tableContainer table{
+	width:100%;
+	border-collapse:collapse;
+	font-size:.95rem;
+}
+
+#tableContainer th, #tableContainer td{
+	padding:.6rem .5rem;
+	text-align:left;
+	border-bottom:1px solid #f1f5f9;
+}
+
+#tableContainer thead th{
+	font-size:.88rem;
+	color:var(--muted);
+	font-weight:600;
+}
+
+.row-actions button{margin-right:.4rem;padding:.4rem .6rem;border-radius:6px}
+.row-actions .edit{background:#fbbf24;color:#0f172a}
+.row-actions .delete{background:var(--danger)}
+
+/* Aside helpers */
+aside h3, aside h4{margin-top:0}
+
+.small-info{font-size:.85rem;color:var(--muted)}
+
+/* Footer */
+footer{
+	margin-top:1.25rem;
+	text-align:center;
+	color:var(--muted);
+}
+
+/* Accessible focus for interactive elements */
+a:focus, button:focus, input:focus{outline:3px solid rgba(37,99,235,0.12);outline-offset:2px}
+
+/* Empty state */
+.empty-state{
+	padding:1rem;
+	background:linear-gradient(180deg, rgba(59,130,246,0.04), rgba(59,130,246,0.02));
+	border-radius:8px;
+	color:var(--muted);
+	text-align:center;
+}
+
+/* Utilities */
+.text-right{text-align:right}
+.flex{display:flex}
+.items-center{align-items:center}
+.gap-sm{gap:.5rem}
+
+/* Small screens adjustments */
+@media (max-width:520px){
+	header{flex-direction:column;align-items:flex-start}
+	.container{margin:1rem}
+	button{width:100%}
+	.topbar{width:100%;justify-content:space-between}
+}
+
+/* Smooth inputs on number spinners */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button{margin:0}
+
+/* Minor aesthetics for lists */
+ul{padding-left:1.1rem;margin-top:.3rem}
+
+/* Final small visual polish */
+h2{margin-top:0}
+
