@@ -10,83 +10,33 @@
 <body>
     <div class="container">
         <header>
-            <h1>Inventario de Bodega</h1>
             <nav class="topbar">
                 <span id="user-info" class="muted"></span>
-                <button id="logoutBtn" class="btn-logout" style="display:none">Cerrar sesión</button>
+                <button id="logoutBtn" class="btn-logout hidden">Cerrar sesión</button>
             </nav>
         </header>
 
         <main role="main" class="grid" aria-labelledby="main-heading">
-            <section class="card" id="inventory-section" style="display:none">
-                <h2 id="main-heading">Inventario</h2>
-                <p class="lead">Admin puede agregar, editar cantidad y eliminar productos.</p>
+            <section class="card" id="inventory-section" >
+                <h1 id="main-heading" class="hero-title">Inventario de Bodega</h1>
+                <p class="lead text-center">Admin puede agregar, editar cantidad y eliminar productos.</p>
 
-                <form id="addForm" aria-label="Agregar producto">
-                    <label>Nombre
-                        <input type="text" id="nombre" required>
-                    </label>
-                    <label>Marca
-                        <input type="text" id="marca">
-                    </label>
-                    <label>Modelo
-                        <input type="text" id="modelo">
-                    </label>
-                    <label>Precio (USD)
-                        <input type="number" id="precio" min="0" step="0.01" value="0">
-                    </label>
-                    <label>Cantidad
-                        <input type="number" id="cantidad" min="0" step="1" value="0">
-                    </label>
-                    <p class="form-row">
-                        <button type="submit">Agregar / Guardar</button>
-                    </p>
-                </form>
+                <div class="text-center">
+                    <button id="addProductBtn">Agregar producto</button>
+                </div>
 
-                <div id="tableContainer"></div>
+                <div id="tableContainer" class="inventory-area"></div>
             </section>
 
             <aside class="card" aria-label="Sidebar">
-                <div id="login-card">
-                    <h3>Acceso Administrador</h3>
-                    <p class="muted">Ingrese con su usuario para administrar cantidades.</p>
-                    <form id="loginForm">
-                        <label>Usuario
-                            <input type="text" id="username" required>
-                        </label>
-                        <label>Contraseña
-                            <input type="password" id="password" required>
-                        </label>
-                        <p class="form-row">
-                            <button type="submit">Iniciar sesión</button>
-                        </p>
-                        <p class="muted small-info">Usuario por defecto: <strong>admin</strong>, contraseña: <strong>admin123</strong></p>
-                    </form>
+                <div id="search-box" class="search-box-right">
+                    <label for="search" class="muted">Buscar:</label>
+                    <input type="search" id="search" placeholder="Buscar producto..." />
                 </div>
 
-                <div id="admin-config" style="margin-top:1rem">
-                    <h4>Configurar cuenta admin</h4>
-                    <p class="muted small-info">Para cambiar el usuario/contraseña ingrese las credenciales actuales y las nuevas.</p>
-                    <form id="adminForm">
-                        <label>Usuario actual
-                            <input type="text" id="currentUser" required>
-                        </label>
-                        <label>Contraseña actual
-                            <input type="password" id="currentPass" required>
-                        </label>
-                        <label>Nuevo usuario
-                            <input type="text" id="newUser" required>
-                        </label>
-                        <label>Nueva contraseña
-                            <input type="password" id="newPass" required>
-                        </label>    
-                        <p class="form-row">
-                            <button type="submit">Actualizar credenciales</button>
-                        </p>
-                    </form>
-                </div>
+                
 
-                <div id="info" style="margin-top:1rem">
+                <div id="info" class="info-block">
                     <h4>Ayuda rápida</h4>
                     <ul>
                         <li>Registrar productos con Nombre, Marca, Modelo, Precio y Cantidad.</li>
@@ -100,6 +50,42 @@
         <footer>
             <small>© <span id="year"></span> — Inventario básico</small>
         </footer>
+    </div>
+
+    <!-- Modal para agregar/editar producto -->
+    <div id="modalOverlay" class="modal-overlay" aria-hidden="true">
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+            <header class="modal-header">
+                <h2 id="modalTitle">Agregar / Editar producto</h2>
+                <button id="modalClose" aria-label="Cerrar">×</button>
+            </header>
+
+            <form id="addForm" aria-label="Agregar producto">
+                <label>Imagen
+                    <input type="file" id="imageInput" accept="image/*">
+                </label>
+                <div class="image-preview"><img id="imagePreview" alt="Vista previa" /></div>
+                <label>Nombre
+                    <input type="text" id="nombre" required>
+                </label>
+                <label>Marca
+                    <input type="text" id="marca">
+                </label>
+                <label>Modelo
+                    <input type="text" id="modelo">
+                </label>
+                <label>Precio (USD)
+                    <input type="number" id="precio" min="0" step="0.01" value="0">
+                </label>
+                <label>Cantidad
+                    <input type="number" id="cantidad" min="0" step="1" value="0">
+                </label>
+                <p class="form-row modal-actions">
+                    <button type="button" id="cancelModal">Cancelar</button>
+                    <button type="submit">Agregar / Guardar</button>
+                </p>
+            </form>
+        </div>
     </div>
 
     <script src="Script.js" defer></script>
